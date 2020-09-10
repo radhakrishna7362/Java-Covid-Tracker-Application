@@ -1,10 +1,16 @@
 package enduser;
 import java.util.*;
 
+import controllers.CitizenHolder;
+import controllers.StateHolder;
+
 public class UserClass {
 	//Take input
 	//use classes and their functionality
 	//give output
+	static CitizenHolder ch=new CitizenHolder();
+	static StateHolder sh=new StateHolder();
+	
 	private static final Scanner s=new Scanner(System.in);
 	public static void main(String[] args) {
 		boolean repeat =true;
@@ -24,8 +30,8 @@ public class UserClass {
 	
 	private static int displayMainMenu() {
 		System.out.println("Who are you?");
-		System.out.println("1. Government Ofiicial");
-		System.out.println("2. Citizen");
+		System.out.println("1. Citizen");
+		System.out.println("2. Government Ofiicial");
 		System.out.println("Enter any other number to exit");
 		return s.nextInt();
 	}
@@ -64,7 +70,7 @@ public class UserClass {
 		//logic citizen enters state name, search for state and view details of state
 		System.out.println("Enter state name");
 		String name=s.next();
-		System.out.println(sh.displayStateDetials(name));
+		System.out.println(sh.displayStateDetails(name));
 	}
 	
 	private static void govtOfficial() {
@@ -80,8 +86,6 @@ public class UserClass {
 					break;
 			case 2: updateState();
 					break;
-			case 3: displayAllCitizens();
-					break;
 			default: repeat=false;
 			}
 		}	
@@ -90,7 +94,6 @@ public class UserClass {
 	private static int govtOfficialSubMenu() {
 		System.out.println("1. Add new State");
 		System.out.println("2. update an existing state");
-		System.out.println("3. To view all citizen details");
 		System.out.println("Enter any other number to exit");
 		return s.nextInt();
 	}
@@ -109,7 +112,7 @@ public class UserClass {
 	}
 	
 	private static void updateState() {
-		//;ogic - authenticate, ask for state name and if state exists then update state
+		//logic - authenticate, ask for state name and if state exists then update state
 		if(authenticated()) {
 			System.out.println("Enter state name");
 			String sname=s.next();
@@ -123,13 +126,9 @@ public class UserClass {
 		else System.out.println("User not authenticated");
 	}
 	
-	private static void displayAllCitizens() {
-		System.out.println(ch);
-	}
-	
 	private static boolean authenticated() {
 		//logic need aadhar and password
-		//if citizen exists with addhar and if password is matching then return true
+		//if citizen exists with aadhar and if password is matching then return true
 		System.out.println("Enter Aadhar Number");
 		long a=s.nextLong();
 		System.out.println("Enter password");

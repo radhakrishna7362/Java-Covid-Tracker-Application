@@ -12,7 +12,7 @@ public class StateHolder {
 	private static StateHolder sh = null;
 	
 	//private no-parameter constructor is to initialize the members especially when the members are reference type
-	private StateHolder() {
+	public StateHolder() {
 		country= new State[MAX_STATES];
 		this.count=0;
 	}

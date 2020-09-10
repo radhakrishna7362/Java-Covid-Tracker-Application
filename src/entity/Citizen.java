@@ -4,6 +4,7 @@ public class Citizen {
 	//members
 	long aadhar;
 	String name;
+	private State s;
 	boolean govtOfficial;
 	private static final String govtPswd="Govt@123";
 			
@@ -18,6 +19,8 @@ public class Citizen {
 	
 	public Citizen(String name, long aadhar) {
 		this();
+		if(name!=null && !(name.isEmpty())) this.name=name;
+		if(aadhar>0) this.aadhar =aadhar;
 	}
 	
 	//mutator
@@ -46,4 +49,15 @@ public class Citizen {
 	public boolean isGovtOfficial() {
 		return this.govtOfficial;
 	}
+	
+	public long getAadhar() {
+		return this.aadhar;
+	}
+	public static String getPswd() {
+		return govtPswd;
+	}
+	public State getState() {
+		return this.s;
+	} 
+
 }
